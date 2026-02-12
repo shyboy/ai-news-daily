@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI早报 - 杨老师玩AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --bg-primary: #0f0f23;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #16213e;
+            --accent-primary: #6366f1;
+            --accent-secondary: #8b5cf6;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: rgba(99, 102, 241, 0.2);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            --shadow-card: 0 8px 32px rgba(99, 102, 241, 0.15);
+        }
+        
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-primary: #f8fafc;
+                --bg-secondary: #f1f5f9;
+                --bg-card: #ffffff;
+                --text-primary: #1e293b;
+                --text-secondary: #475569;
+                --text-muted: #64748b;
+                --border-color: rgba(99, 102, 241, 0.15);
+                --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+                --shadow-card: 0 8px 32px rgba(99, 102, 241, 0.1);
+            }
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 32px 20px;
+            margin-bottom: 24px;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-gradient);
+        }
+        
+        .date-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--accent-gradient);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+        
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+        
+        /* Section Styling */
+        .section {
+            margin-bottom: 24px;
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-left: 12px;
+            border-left: 3px solid var(--accent-primary);
+        }
+        
+        .section-icon {
+            font-size: 20px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        
+        /* Card Styling */
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-card);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(99, 102, 241, 0.2);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .card-badge {
+            flex-shrink: 0;
+            padding: 4px 10px;
+            background: var(--accent-gradient);
+            color: white;
+            font-size: 11px;
+            font-weight: 600;
+            border-radius: 6px;
+        }
+        
+        .card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+        
+        .card-content {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        .card-comment {
+            margin-top: 12px;
+            padding: 12px 16px;
+            background: rgba(99, 102, 241, 0.08);
+            border-radius: 10px;
+            border-left: 3px solid var(--accent-primary);
+        }
+        
+        .card-comment-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 4px;
+        }
+        
+        .card-comment-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        /* Tips Section */
+        .tip-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+        
+        .tip-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 8px;
+        }
+        
+        .tip-content {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .code-block {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 12px;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 13px;
+            color: var(--text-primary);
+            overflow-x: auto;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 32px 20px;
+            margin-top: 8px;
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .footer-icon {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+        
+        .footer-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .footer-brand {
+            font-weight: 600;
+            color: var(--accent-primary);
+        }
+        
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 12px;
+            }
+            
+            .header {
+                padding: 24px 16px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+            
+            .card {
+                padding: 16px;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .section-header {
+                padding-left: 8px;
+            }
+            
+            .section-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026年2月10日 星期二</div>
+            <h1 class="title">AI早报</h1>
+            <p class="subtitle">杨老师玩AI · 每日精选</p>
+        </header>
+
+        <!-- 今日热点 -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-icon">🔥</span>
+                <h2 class="section-title">今日热点</h2>
+            </div>
+            
+            <article class="card">
+                <div class="card-header">
+                    <span class="card-badge">行业动态</span>
+                    <h3 class="card-title">OpenAI加速Agent生态布局，ChatGPT任务能力持续增强</h3>
+                </div>
+                <div class="card-content">
+                    <p>据最新消息，OpenAI正在大力投入Agent（智能体）技术的研发与应用落地。从早期的插件系统到最新的任务执行能力，ChatGPT正在从一个对话工具进化为真正的数字助手。这标志着AI从"回答问题"向"完成任务"的关键转变。</p>
+                    <div class="card-comment">
+                        <div class="card-comment-label">💡 选题角度</div>
+                        <div class="card-comment-text">"Agent"这个词对普通读者很陌生，但大家都懂"数字秘书"。可以聊聊：为什么AIAgent是今年最值得关注的赛道？普通人如何从中受益？</div>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="card">
+                <div class="card-header">
+                    <span class="card-badge">产品发布</span>
+                    <h3 class="card-title">国产大模型竞争白热化，多模态能力成新战场</h3>
+                </div>
+                <div class="card-content">
+                    <p>2025年以来，国内AI大模型竞争进入新阶段。以DeepSeek、文心一言、通义千问为代表的国产模型，纷纷在多模态理解和生成能力上发力。从文字对话到图像理解、视频生成，大模型正在变得越来越"全能"。</p>
+                    <div class="card-comment">
+                        <div class="card-comment-label">💡 选题角度</div>
+                        <div class="card-comment-text">可以做一个"国产AI工具横评"系列，用普通人视角对比各家的优缺点。比如："我用5款国产AI写了一篇年终总结，结果出乎意料"。</div>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="card">
+                <div class="card-header">
+                    <span class="card-badge">趋势洞察</span>
+                    <h3 class="card-title">AI编程工具普及加速，开发者工作方式正在重构</h3>
+                </div>
+                <div class="card-content">
+                    <p>GitHub Copilot、Cursor等AI编程助手正在从根本上改变软件开发流程。据统计，已有超过40%的开发者在日常工作中使用AI辅助编码。AI不仅帮助写代码，还能进行代码审查、生成测试用例、解释复杂逻辑——程序员的"工作流"正在被重新定义。</p>
+                    <div class="card-comment">
+                        <div class="card-comment-label">💡 选题角度</div>
+                        <div class="card-comment-text">针对杨老师的职教背景，可以写："职校学生学编程还要从Hello World开始吗？AI时代下的技能培养思考"——既有教育视角，又有时代感。</div>
+                    </div>
+                </div>
+            </article>
+            
+            <article class="card">
+                <div class="card-header">
+                    <span class="card-badge">前沿探索</span>
+                    <h3 class="card-title">人形机器人赛道持续升温，具身智能成AI新风口</h3>
+                </div>
+                <div class="card-content">
+                    <p>特斯拉Optimus、Figure AI、波士顿电力的Atlas……人形机器人正在从科幻走进现实。2025年被业内视为"具身智能元年"——AI不再局限于数字世界，而是开始拥有物理身体，能够在真实环境中感知、思考、行动。这一领域的突破可能彻底改变制造业、服务业乃至家庭生活。</p>
+                    <div class="card-comment">
+                        <div class="card-comment-label">💡 选题角度</div>
+                        <div class="card-comment-text">"机器人会抢走我们的工作吗？"这个话题永远有人看。可以换个角度：从"威胁"转向"机遇"——普通人如何参与这场机器人革命？</div>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- 实用技巧 -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-icon">💡</span>
+                <h2 class="section-title">实用技巧</h2>
+            </div>
+            
+            <article class="card tip-card">
+                <div class="tip-title">
+                    <span>🎯</span>
+                    <span>Prompt技巧：让AI给出更结构化回答</span>
+                </div>
+                <div class="tip-content">
+                    <p style="margin-bottom: 12px;">当你需要AI输出有条理的内容时，在Prompt结尾加上格式要求，效果立竿见影：</p>
+                    <div class="code-block">
+请用以下格式回答：<br>
+1. 核心观点（一句话总结）<br>
+2. 详细解释（2-3段）<br>
+3. 实际例子（1个具体案例）<br>
+4. 行动建议（3条可操作建议）
+                    </div>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);">💬 <strong>原理</strong>：AI会根据你的格式指令"填空"，输出质量比开放式提问高得多。</p>
+                </div>
+            </article>
+            
+            <article class="card tip-card">
+                <div class="tip-title">
+                    <span>🛠️</span>
+                    <span>工具推荐：用"反向Prompt"优化你的提问</span>
+                </div>
+                <div class="tip-content">
+                    <p style="margin-bottom: 12px;">写不出好Prompt？试试让AI帮你写。这是Prompt Engineering中一个实用的技巧：</p>
+                    <div class="code-block">
+我想[达成某个目标]，但我不知道怎么向AI提问。<br>
+请帮我生成3个不同角度的Prompt，要求：<br>
+- 直接可用，复制粘贴就能用<br>
+- 覆盖不同的提问策略（直接型、引导型、角色扮演型）<br>
+- 每个Prompt都包含必要的上下文和格式要求
+                    </div>
+                    <p style="margin-top: 12px; font-size: 13px; color: var(--text-muted);">💡 <strong>进阶玩法</strong>：把生成的Prompt套娃——用第一个Prompt生成的内容，作为第二个Prompt的输入，层层优化。</p>
+                </div>
+            </article>
+        </section>
+
+        <!-- 选题建议 -->
+        <section class="section">
+            <div class="section-header">
+                <span class="section-icon">📝</span>
+                <h2 class="section-title">选题建议</h2>
+            </div>
+            
+            <div class="card">
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <div style="padding: 16px; background: rgba(99, 102, 241, 0.08); border-radius: 12px; border-left: 3px solid var(--accent-primary);">
+                        <div style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-bottom: 6px;">🔥 热点切入</div>
+                        <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+                            <strong>"我用了3个月AI编程助手，代码写得更快了，但我开始担心一件事"</strong><br>
+                            从个人体验切入，探讨AI对程序员职业发展的深层影响，既有温度又有思考深度。
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 16px; background: rgba(139, 92, 246, 0.08); border-radius: 12px; border-left: 3px solid var(--accent-secondary);">
+                        <div style="font-size: 13px; font-weight: 600; color: var(--accent-secondary); margin-bottom: 6px;">💡 实用干货</div>
+                        <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+                            <strong>"ChatGPT不好用？可能是你不会这5个提问技巧"</strong><br>
+                            面向普通用户的Prompt技巧分享，手把手教学，门槛低但获得感强。
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 16px; background: rgba(99, 102, 241, 0.08); border-radius: 12px; border-left: 3px solid var(--accent-primary);">
+                        <div style="font-size: 13px; font-weight: 600; color: var(--accent-primary); margin-bottom: 6px;">🎓 教育视角</div>
+                        <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.6;">
+                            <strong>"职教学生该怎么学AI？我的一些思考"</strong><br>
+                            结合杨老师的职教背景，分享对职业院校AI教育的观察和建议，专业且有针对性。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-icon">🔔</div>
+            <p class="footer-text">由 <span class="footer-brand">小叮</span> 自动生成</p>
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">2026年2月10日 · 杨老师玩AI</p>
+        </footer>
+    </div>
+</body>
+</html>

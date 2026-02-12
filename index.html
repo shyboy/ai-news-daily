@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI早报 - 杨老师玩AI</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border: #334155;
+            --accent: #8b5cf6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 24px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+        
+        header h1 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            position: relative;
+            letter-spacing: -0.5px;
+        }
+        
+        header p {
+            font-size: 18px;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        .subtitle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .subtitle span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+        .news-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        }
+        
+        .date-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 12px;
+            padding: 16px 20px;
+            text-align: center;
+            min-width: 80px;
+        }
+        
+        .date-day {
+            font-size: 32px;
+            font-weight: 800;
+            line-height: 1;
+        }
+        
+        .date-month {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-top: 4px;
+        }
+        
+        .news-info {
+            flex: 1;
+        }
+        
+        .news-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text);
+        }
+        
+        .news-desc {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+        
+        .arrow {
+            font-size: 24px;
+            color: var(--primary);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        
+        .news-card:hover .arrow {
+            opacity: 1;
+            transform: translateX(4px);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        footer .heart {
+            color: var(--primary);
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+        
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI早报</h1>
+            <p>每日AI领域精选资讯 · 实用技巧 · 选题灵感</p>
+            <div class="subtitle">
+                <span>📱 适配手机</span>
+                <span>🌙 深色模式</span>
+                <span>🔄 每日更新</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="news-list">
+                <a href="2025-02-05.html" class="news-card">
+                    <div class="date-box">
+                        <div class="date-day">05</div>
+                        <div class="date-month">2月 2025</div>
+                    </div>
+                    <div class="news-info">
+                        <div class="news-title">AI早报 · 周三</div>
+                        <div class="news-desc">OpenAI o3-mini发布、DeepSeek火爆出圈、AI Agent赛道解读、Prompt技巧...</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </a>
+
+                <!-- 更多日期卡片将在这里自动生成 -->
+                
+                <div class="empty-state">
+                    <div class="empty-state-icon">📅</div>
+                    <div>每天早上 8:00 (北京时间) 自动更新</div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>由 <strong>小叮</strong> <span class="heart">🔔</span> 为杨老师自动生成</p>
+            <p style="margin-top:8px;opacity:0.7;">杨老师玩AI · 每日早报</p>
+        </footer>
+    </div>
+</body>
+</html>

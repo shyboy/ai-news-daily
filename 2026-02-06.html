@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI早报 - 杨老师玩AI | 2026年2月6日</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f1a;
+            --bg-secondary: #1a1a2e;
+            --bg-card: #252542;
+            --text-primary: #ffffff;
+            --text-secondary: #b8b8d1;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --tag-hot: #f472b6;
+            --tag-tool: #34d399;
+            --tag-tips: #60a5fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 24px 0;
+            border-bottom: 1px solid var(--bg-secondary);
+            margin-bottom: 24px;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent), var(--tag-hot));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+        
+        .date {
+            color: var(--text-secondary);
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            color: var(--accent-light);
+            font-size: 13px;
+            margin-top: 6px;
+        }
+        
+        /* Section Title */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 28px 0 16px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+        
+        .section-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        
+        .icon-hot { background: rgba(244, 114, 182, 0.2); }
+        .icon-tool { background: rgba(52, 211, 153, 0.2); }
+        .icon-idea { background: rgba(96, 165, 250, 0.2); }
+        
+        /* News Card */
+        .news-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-left: 3px solid var(--accent);
+        }
+        
+        .news-card.hot { border-left-color: var(--tag-hot); }
+        .news-card.tool { border-left-color: var(--tag-tool); }
+        
+        .news-tag {
+            display: inline-block;
+            font-size: 11px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .tag-hot { background: rgba(244, 114, 182, 0.2); color: var(--tag-hot); }
+        .tag-tool { background: rgba(52, 211, 153, 0.2); color: var(--tag-tool); }
+        
+        .news-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .news-desc {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Tips Card */
+        .tips-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(244, 114, 182, 0.1));
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .tips-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--accent-light);
+            margin-bottom: 8px;
+        }
+        
+        .tips-content {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .tips-content code {
+            background: rgba(99, 102, 241, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "SF Mono", Monaco, monospace;
+            font-size: 12px;
+            color: var(--accent-light);
+        }
+        
+        /* Topic Card */
+        .topic-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .topic-number {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .topic-content {
+            flex: 1;
+        }
+        
+        .topic-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .topic-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 32px 0 16px;
+            border-top: 1px solid var(--bg-secondary);
+            margin-top: 24px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .footer-text {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        .footer-brand {
+            color: var(--accent-light);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">AI早报</div>
+            <div class="date">2026年2月6日 星期五</div>
+            <div class="subtitle">杨老师玩AI · 每日精选</div>
+        </header>
+
+        <!-- 今日热点 -->
+        <div class="section-title">
+            <div class="section-icon icon-hot">🔥</div>
+            <span>今日热点</span>
+        </div>
+
+        <div class="news-card hot">
+            <span class="news-tag tag-hot">重磅</span>
+            <div class="news-title">OpenAI o3-mini 正式发布，推理能力再升级</div>
+            <div class="news-desc">OpenAI推出新一代推理模型o3-mini，在数学、编程和科学推理任务上表现突出。免费用户也能体验，付费用户获得更高额度。这意味着AI的"思考深度"正在快速平民化。</div>
+        </div>
+
+        <div class="news-card hot">
+            <span class="news-tag tag-hot">关注</span>
+            <div class="news-title">DeepSeek 热度持续，国产大模型生态加速</div>
+            <div class="news-desc">DeepSeek-R1以其极高的性价比引发行业震动，多家云服务商紧急接入。这波"国产平替"浪潮，正在倒逼国际巨头重新思考定价策略。</div>
+        </div>
+
+        <div class="news-card">
+            <span class="news-tag" style="background: rgba(99, 102, 241, 0.2); color: var(--accent-light);">动态</span>
+            <div class="news-title">谷歌 Gemini 2.0 Flash 全面开放</div>
+            <div class="news-desc">Gemini 2.0 Flash正式对所有开发者开放，支持100万token超长上下文。原生多模态能力（图文音视频统一处理）是其杀手锏，适合需要处理大量文档或视频的场景。</div>
+        </div>
+
+        <div class="news-card tool">
+            <span class="news-tag tag-tool">工具</span>
+            <div class="news-title">Cursor 0.45 发布，AI编程体验再进化</div>
+            <div class="news-desc">被称为"最强AI编辑器"的Cursor发布新版本，改进了代码补全的上下文理解能力，新增对更多编程语言的支持。对于想提升编码效率的开发者，这仍是目前的标杆产品。</div>
+        </div>
+
+        <!-- 实用技巧 -->
+        <div class="section-title">
+            <div class="section-icon icon-tool">💡</div>
+            <span>实用技巧</span>
+        </div>
+
+        <div class="tips-card">
+            <div class="tips-title">🎯 Prompt技巧：让AI帮你"深度思考"</div>
+            <div class="tips-content">
+                <p>想让AI给出更有深度的回答？试试这个公式：</p>
+                <p style="margin: 10px 0;"><code>请用"第一性原理"分析[问题]，列出3个反常识观点，并解释为什么大众认知可能是错的。</code></p>
+                <p>这个方法能迫使AI跳出套路化回答，产出更有洞察力的内容。适合写作、研究、商业分析。</p>
+            </div>
+        </div>
+
+        <div class="tips-card">
+            <div class="tips-title">🛠️ 工具推荐：Perplexity Spaces</div>
+            <div class="tips-content">
+                <p>Perplexity Pro用户的隐藏福利：<strong>Spaces</strong>功能。</p>
+                <p>你可以为不同主题创建专属"空间"，每个空间有自己的知识库、搜索偏好和对话历史。比如：</p>
+                <ul style="margin: 8px 0; padding-left: 20px;">
+                    <li>"考研数学"空间：只关注解题技巧</li>
+                    <li>"职教研究"空间：专注教育政策</li>
+                </ul>
+                <p>这让AI搜索从"单次查询"变成"持续协作"。</p>
+            </div>
+        </div>
+
+        <!-- 选题建议 -->
+        <div class="section-title">
+            <div class="section-icon icon-idea">✍️</div>
+            <span>选题建议</span>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-number">1</div>
+            <div class="topic-content">
+                <div class="topic-title">"DeepSeek效应"：国产AI如何倒逼巨头降价</div>
+                <div class="topic-desc">从DeepSeek-R1的"性价比革命"切入，聊聊国产大模型崛起的蝴蝶效应。角度：普通人的机会在哪？</div>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-number">2</div>
+            <div class="topic-content">
+                <div class="topic-title">职教老师的AI生存指南</div>
+                <div class="topic-desc">结合杨老师实际身份，分享AI如何辅助备课、出题、改作业。痛点+解决方案，接地气。</div>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <div class="topic-number">3</div>
+            <div class="topic-content">
+                <div class="topic-title">"o3-mini免费了"：AI推理能力的平民化时代</div>
+                <div class="topic-desc">解读OpenAI o3-mini开放的意义——普通人能免费用到"博士级"AI思考。背后趋势是什么？</div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-logo">🔔</div>
+            <div class="footer-text">
+                由 <span class="footer-brand">小叮</span> 自动生成<br>
+                杨老师玩AI · 每日精选
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
