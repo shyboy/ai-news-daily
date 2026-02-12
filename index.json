@@ -2,17 +2,23 @@
   "meta": {
     "title": "AI早报 - 杨老师玩AI",
     "description": "每日AI领域精选资讯、实用技巧、选题灵感",
-    "updated": "2026-02-12T16:50:00+08:00",
-    "total": 7,
+    "updated": "2026-02-12T17:05:00+08:00",
+    "total": 8,
     "version": "2.0"
   },
   "items": [
     {
-      "date": "2026-02-11",
-      "title": "AI早报 · 周二",
-      "desc": "AI领域最新动态、实用技巧、选题灵感...",
-      "url": "2026-02-11.html",
+      "date": "2026-02-12",
+      "title": "AI早报 · 周四",
+      "desc": "Vision Pro国行发售、LLaMA 3.1开源、Sora开放商用、Cursor破千万用户...",
+      "url": "2026-02-12.html",
       "isLatest": true
+    },
+    {
+      "date": "2026-02-11",
+      "title": "AI早报 · 周三",
+      "desc": "AI领域最新动态、实用技巧、选题灵感...",
+      "url": "2026-02-11.html"
     },
     {
       "date": "2026-02-10",
