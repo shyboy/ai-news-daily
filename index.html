@@ -160,6 +160,25 @@
             transform: translateX(4px);
         }
         
+        .news-card.latest {
+            border-color: var(--primary);
+            background: linear-gradient(135deg, var(--card) 0%, rgba(99, 102, 241, 0.1) 100%);
+        }
+        
+        .badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-left: 10px;
+        }
+        
+        .badge-new {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -171,16 +190,23 @@
             color: var(--primary);
         }
         
-        .empty-state {
+        .update-info {
             text-align: center;
-            padding: 60px 20px;
-            color: var(--text-secondary);
+            padding: 20px;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
         }
         
-        .empty-state-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-            opacity: 0.5;
+        .update-info p {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .update-time {
+            color: var(--primary);
+            font-weight: 600;
         }
     </style>
 </head>
@@ -197,7 +223,80 @@
         </header>
 
         <main>
+            <div class="update-info">
+                <p>📅 已更新至 <span class="update-time">2025年2月11日</span> · 每天早上 8:00 (北京时间) 自动更新</p>
+            </div>
+
             <div class="news-list">
+                <!-- 2026-02-11 -->
+                <a href="2026-02-11.html" class="news-card latest">
+                    <div class="date-box">
+                        <div class="date-day">11</div>
+                        <div class="date-month">2月 2026</div>
+                    </div>
+                    <div class="news-info">
+                        <div class="news-title">
+                            AI早报 · 周二
+                            <span class="badge badge-new">最新</span>
+                        </div>
+                        <div class="news-desc">AI领域最新动态、实用技巧、选题灵感...</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </a>
+
+                <!-- 2026-02-10 -->
+                <a href="2026-02-10.html" class="news-card">
+                    <div class="date-box">
+                        <div class="date-day">10</div>
+                        <div class="date-month">2月 2026</div>
+                    </div>
+                    <div class="news-info">
+                        <div class="news-title">AI早报 · 周一</div>
+                        <div class="news-desc">AI领域最新动态、实用技巧、选题灵感...</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </a>
+
+                <!-- 2026-02-07 -->
+                <a href="2026-02-07.html" class="news-card">
+                    <div class="date-box">
+                        <div class="date-day">07</div>
+                        <div class="date-month">2月 2026</div>
+                    </div>
+                    <div class="news-info">
+                        <div class="news-title">AI早报 · 周五</div>
+                        <div class="news-desc">AI领域最新动态、实用技巧、选题灵感...</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </a>
+
+                <!-- 2026-02-06 -->
+                <a href="2026-02-06.html" class="news-card">
+                    <div class="date-box">
+                        <div class="date-day">06</div>
+                        <div class="date-month">2月 2026</div>
+                    </div>
+                    <div class="news-info">
+                        <div class="news-title">AI早报 · 周四</div>
+                        <div class="news-desc">AI领域最新动态、实用技巧、选题灵感...</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </a>
+
+                <!-- 2025-02-09 -->
+                <a href="2025-02-09.html" class="news-card">
+                    <div class="date-box">
+                        <div class="date-day">09</div>
+                        <div class="date-month">2月 2025</div>
+                    </div>
+                    <div class="news-info">
+                        <div class="news-title">AI早报 · 周日</div>
+                        <div class="news-desc">AI领域最新动态、实用技巧、选题灵感...</div>
+                    </div>
+                    <div class="arrow">→</div>
+                </a>
+
+                <!-- 2025-02-05 -->
                 <a href="2025-02-05.html" class="news-card">
                     <div class="date-box">
                         <div class="date-day">05</div>
@@ -205,17 +304,10 @@
                     </div>
                     <div class="news-info">
                         <div class="news-title">AI早报 · 周三</div>
-                        <div class="news-desc">OpenAI o3-mini发布、DeepSeek火爆出圈、AI Agent赛道解读、Prompt技巧...</div>
+                        <div class="news-desc">OpenAI o3-mini发布、DeepSeek火爆出圈、AI Agent赛道、Prompt技巧...</div>
                     </div>
                     <div class="arrow">→</div>
                 </a>
-
-                <!-- 更多日期卡片将在这里自动生成 -->
-                
-                <div class="empty-state">
-                    <div class="empty-state-icon">📅</div>
-                    <div>每天早上 8:00 (北京时间) 自动更新</div>
-                </div>
             </div>
         </main>
 
